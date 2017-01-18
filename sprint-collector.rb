@@ -18,6 +18,7 @@ end
   5096 => /Tomer|Brisker|tbrisker/i,
   3517 => /Daniel|Lobato|dlobatog/i,
   6040 => /Amir|Feferkuchen|afeferku/i,
+  6971 => /Sebastian|Gräßl|bastilian/i,
   718 => /Lukas|Zapletal|lzap/i
 }
 
@@ -121,7 +122,7 @@ print_issues(closed, 'closed',  options)
 
 ready_for_testing['issues'].each do |issue|
   next if issue['project']['name'] == 'Discovery'
-  if !issue['fixed_version'].nil? && issue['fixed_version']['id'] == options[:target]
+  if !issue['fixed_version'].nil? && issue['fixed_version']['id'].to_s == options[:target]
     puts "Issue #{issue['id']} skipped - target version already set to #{options[:target]}"
     next
   end
@@ -129,7 +130,7 @@ ready_for_testing['issues'].each do |issue|
 end
 closed['issues'].each do |issue|
   next if issue['project']['name'] == 'Discovery'
-  if !issue['fixed_version'].nil? && issue['fixed_version']['id'] == options[:target]
+  if !issue['fixed_version'].nil? && issue['fixed_version']['id'].to_s == options[:target]
     puts "Issue #{issue['id']} skipped - target version already set to #{options[:target]}"
     next
   end
